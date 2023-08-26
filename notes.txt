@@ -1,0 +1,1 @@
+SafeAreaView: used as an import to determind where on the screen is safe for viewing. Can be used instead of View.
