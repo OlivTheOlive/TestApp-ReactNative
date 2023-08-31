@@ -1,5 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, SafeAreaView, Alert, Button } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  StatusBar,
+  Button,
+  Platform,
+} from "react-native";
 
 export default function App() {
   return (
@@ -7,31 +12,18 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <Button
         title="Click me"
-        onPress={() =>
-          Alert.alert("My title", "My message", [
-            { text: "yes", onPress: () => console.log("yes clicked") },
-            { text: "no", onPress: () => console.log("no clicked") },
-          ])
-        }
-      />
-      <Button
-        title="Click me Too!"
-        onPress={() =>
-          Alert.prompt("My Tittle", "My Message", (text) => console.log(text))
-        }
+        onPress={() => console.log(StatusBar.currentHeight)}
       />
 
       <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
-// styles creates a StyleSheet object that has propreties like container
-// recommended practice
+// StatusBar.currentHeight just for android. ignored for ios
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
