@@ -1,37 +1,32 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  Pressable,
-} from "react-native";
+import { StyleSheet, SafeAreaView, Alert, Button } from "react-native";
 
 export default function App() {
-  const handlePress = () => console.log("Text clicked");
-
   return (
+    // {[style.container, ..., ...]} anything on the right will override whatever matching content from its previous style.
     <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1} onPress={handlePress}>
-        Testing React Native fundamentals
-      </Text>
-      <Pressable onPress={() => console.log("image pressed")}>
-        <Image
-          blurRadius={10}
-          source={{
-            width: 200,
-            height: 300,
-            uri: "https://picsum.photos/200/300",
-          }}
-        />
-      </Pressable>
+      <Button
+        title="Click me"
+        onPress={() =>
+          Alert.alert("My title", "My message", [
+            { text: "yes", onPress: () => console.log("yes clicked") },
+            { text: "no", onPress: () => console.log("no clicked") },
+          ])
+        }
+      />
+      <Button
+        title="Click me Too!"
+        onPress={() =>
+          Alert.prompt("My Tittle", "My Message", (text) => console.log(text))
+        }
+      />
+
       <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
-
+// styles creates a StyleSheet object that has propreties like container
+// recommended practice
 const styles = StyleSheet.create({
   container: {
     flex: 1,
