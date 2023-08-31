@@ -1,1 +1,3 @@
 SafeAreaView: used as an import to determind where on the screen is safe for viewing. Can be used instead of View.
+Pressable: works for android and iOS.
+Touchables: need two different Touchables for both android and iOS.
